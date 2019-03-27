@@ -9,7 +9,7 @@ app.use(express.static(__dirname + "/public"));
 
 // My all routes will go here.
 app.get('/', function(req, res){
-    res.send("This will be my Homepage!");
+    res.render("homepage");
 });
 
 
