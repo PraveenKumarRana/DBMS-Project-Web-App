@@ -1,1 +1,1 @@
-Desktop app build using React and NodeJS.
+Desktop app build using NodeJS.
