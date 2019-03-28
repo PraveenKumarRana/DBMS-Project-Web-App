@@ -1,0 +1,30 @@
+<% include ../partials/header %>
+    
+    <div class="make-row container">
+        <h1 class="table-header">Distribution Companies</h1>
+        <div class="search-bar" style="align-self: center">
+            <form class="form-inline" action="/api/transmissioncompanylist" method="post">
+                <input class="form-control" type="search" placeholder="Search by State" name="state"></input>
+                <input class="btn btn-primary" type="submit"></input>
+            </form>
+        </div>
+        <div class="item">
+            <p><b>DID</b></p>
+            <p><b>DNAME</b></p>
+            <p><b>Tenure</b></p>
+            <p><b>State</b></p>
+            <p><b>TID</b></p>
+            
+        </div>
+        <%result.forEach(function(transCompany){%>
+            <div class="item">
+                <p><%= transCompany.did %></p>
+                <p><%= transCompany.dname %></p>
+                <p><%= transCompany.tenure %></p>
+                <p><%= transCompany.state %></p>
+                <p><%= transCompany.tid %></p>
+            </div>
+            
+        <%});%>
+    </div>
+<% include ../partials/footer %>
