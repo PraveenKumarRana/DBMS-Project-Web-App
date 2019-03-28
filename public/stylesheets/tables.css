@@ -1,0 +1,29 @@
+.make-row{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.item{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid lightblue;
+}
+
+.item > p{
+    padding: 10px 0px;
+    width: 20%;
+}
+
+.table-header{
+    text-align: center;
+    margin: 20px auto;
+    font-size: 0.5in;
+    color: lightblue;
+}
+
+/* Search bar */
+.search-bar > .form-inline > .form-control{
+    width: 400px;
+    margin-right: 10px;
+}
