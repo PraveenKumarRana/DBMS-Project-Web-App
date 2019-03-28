@@ -10,18 +10,20 @@
         </div>
         <div class="item">
             <p><b>TID</b></p>
-            <p><b>PNAME</b></p>
-            <p><b>Total Power</b></p>
-            <p><b>Type</b></p>
+            <p><b>TNAME</b></p>
+            <p><b>DID</b></p>
+            <p><b>Total Capacity</b></p>
             <p><b>Location</b></p>
+            <p><b>Tenure</b></p>
         </div>
         <%result.forEach(function(transCompany){%>
             <div class="item">
-                <p><%= powerCompany.pid %></p>
-                <p><%= powerCompany.pname %></p>
-                <p><%= powerCompany.totalpower %></p>
-                <p><%= powerCompany.type %></p>
-                <p><%= powerCompany.location %></p>
+                <p><%= transCompany.tid %></p>
+                <p><%= transCompany.tname %></p>
+                <p><%= transCompany.did %></p>
+                <p><%= transCompany.tcapacity %></p>
+                <p><%= transCompany.location %></p>
+                <p><%= transCompany.tenure %></p>
             </div>
             
         <%});%>

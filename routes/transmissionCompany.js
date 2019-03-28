@@ -17,7 +17,7 @@ connection.connect(function(err) {
     console.log('connected as id ' + connection.threadId);
 });
 
-const createTable = "create table if not exists distributioncompany(did int primary key,dname varchar(50),tenure int,state varchar(50),tid int);";
+const createTable = "create table if not exists transmissioncompany(tid int primary key,tname varchar(50),did int,tcapacity int,state varchar(50),tenure int);";
 connection.query(createTable, function(error, results, fields){
     if(error){
         console.log(error);
@@ -28,18 +28,18 @@ connection.query(createTable, function(error, results, fields){
 
 
 router.get("/transmissioncompanylist", function(req,res){
-    const q = "select * from distributioncompany;";
+    const q = "select * from transmissioncompany;";
     connection.query(q, function(error, results, fields){
         if(error){
             console.log(error);
         } else{
-            res.render("power_company/transmissiongData", {result:results});
+            res.render("transmission_company/transmissiongData", {result:results});
         }
     });
 });
 
 router.post("/transmissioncompanylist/new", function(req, res, next){
-    var q = `insert into powercompany values(${req.body.did},"${req.body.dname}",${req.body.tenure},"${req.body.state}",${req.body.did});`;
+    var q = `insert into powercompany values(${req.body.tid},"${req.body.tname}",${req.body.did},${req.body.tcapacity},"${req.body.state}",${req.body.tenure});`;
     console.log(q);
     connection.query(q, function(error, results, fields){
         if(error) throw error;
