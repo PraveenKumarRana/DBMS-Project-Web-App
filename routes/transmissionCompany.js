@@ -1,22 +1,6 @@
-const mysql = require("mysql2");
 const express = require("express");
 const router = express.Router();
-
-var connection = mysql.createConnection({
-    host:"localhost",
-    user: "root",
-    password: "admin",
-    database: "eds"
-});
-
-connection.connect(function(err) {
-    if (err) {
-        console.error('error connecting: ' + err.stack);
-        return;
-    }
-    console.log('connected as id ' + connection.threadId);
-});
-
+const connection = require("../models/index");
 
 router.get("/transmissioncompanylist", function(req,res){
     const q = "select * from transmissioncompany;";
