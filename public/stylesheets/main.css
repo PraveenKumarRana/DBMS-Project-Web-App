@@ -1,11 +1,14 @@
+body{
+    background-image: linear-gradient(#F2FDFF,#9AD4D6,#101935);
+    height: 100vh;
+}
+
 .navbar{
     box-shadow: 0px 0px 8px black;
 }
 
 /* HOMEPAGE DECORATION */
-.homepage-main{
-    height: 100%;
-}
+
 
 /* LOGIN FORM DECORATION */
 .homepage-main >form {
@@ -21,4 +24,13 @@
 
 .homepage-main >form>input,.homepage-main >form>button{
     margin: 7px 0px;
+}
+
+.login-welcome-page{
+    height: 93vh;
+}
+
+.login-welcome-message{
+    margin-top: -35%;
+    text-align: center;
 }
