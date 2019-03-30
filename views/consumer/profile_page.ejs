@@ -1,0 +1,20 @@
+<% include ../partials/header %>
+    <div class="consumer-profile-page container">
+        <h2 class="table-header">Profile</h2>
+        <div class="user-info-container">
+            <p><b>Name : </b><%=consumer[0].cname%></p>
+            <p><b>Consumer No : </b><span id="cid"><%=consumer[0].cid%></span></p>
+            <p><b>Phone No : </b><<%=consumer[0].phone%></p>
+            <p><b>Email Id : </b><%=consumer[0].email%></p>
+            <p><b>Address : </b></p>
+            <%consumer.forEach(function(consumer){%>
+                <li><%=consumer.address%></li>
+            <%})%>
+            
+        </div>
+    </div>
+    <script>
+        var cid = document.getElementById("cid").innerText;
+        localStorage.setItem("consumerId",cid);
+    </script>
+<% include ../partials/footer %>
