@@ -17,17 +17,6 @@ connection.connect(function(err) {
     console.log('connected as id ' + connection.threadId);
 });
 
-// creating table
-const createTable = "create table if not exists distributioncompany(did int primary key,dname varchar(50),tenure int,state varchar(50),tid int);";
-connection.query(createTable, function(error, results, fields){
-    if(error){
-        console.log(error);
-    } else{
-        console.log("Table created successfully!");
-    }
-});
-
-
 router.get("/distcompanylist", function(req,res){
     const q = "select * from distributioncompany;";
     connection.query(q, function(error, results, fields){

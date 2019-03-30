@@ -17,15 +17,6 @@ connection.connect(function(err) {
     console.log('connected as id ' + connection.threadId);
 });
 
-const createTable = "create table if not exists transmissioncompany(tid int primary key,tname varchar(50),did int,tcapacity int,state varchar(50),tenure int);";
-connection.query(createTable, function(error, results, fields){
-    if(error){
-        console.log(error);
-    } else{
-        console.log("Table created successfully!");
-    }
-});
-
 
 router.get("/transmissioncompanylist", function(req,res){
     const q = "select * from transmissioncompany;";

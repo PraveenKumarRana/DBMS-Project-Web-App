@@ -1,7 +1,13 @@
 <% include ./partials/header %>
 
+    <!-- Creating the login form -->
     <div class="homepage-main">
-        
-    </div>    
+        <form action="/" method="post">
+            <p style="font-size: 14px; color: grey">Please login to see your details...</p>
+            <input class="form-control" type="text" name="eid" placeholder="Consumer ID">
+            <input class="form-control" type="password" name="password" placeholder="Password">
+            <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+    </div>
 
 <% include ./partials/footer %>    

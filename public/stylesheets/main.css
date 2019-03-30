@@ -1,9 +1,24 @@
 .navbar{
-    box-shadow: 0px 0px 20px black;
+    box-shadow: 0px 0px 8px black;
 }
 
 /* HOMEPAGE DECORATION */
 .homepage-main{
-    background-color: rgb(255, 244, 244);
-    height: 100vh;
+    height: 100%;
+}
+
+/* LOGIN FORM DECORATION */
+.homepage-main >form {
+    width: 30%;
+    padding: 5%;
+    margin: 0px auto;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0px 0px 4px  grey;
+}
+
+.homepage-main >form>input,.homepage-main >form>button{
+    margin: 7px 0px;
 }
