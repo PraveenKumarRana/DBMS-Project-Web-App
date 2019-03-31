@@ -23,9 +23,16 @@ app.get('/', function(req, res){
             var consumerId;
             if(results[0]){
                 consumerId = results[0].cid;
-                console.log(consumerId);
+                q = `select * from consumer where cid=${consumerId}`;
+                connection.query(q, function(error, results, fields){
+                    if(error){
+                        console.log("Error generated during Search of user!");
+                    } else {
+                        res.render("homepage", {consumerId:results[0]});
+                    }
+                })
             }
-            res.render("homepage", {consumerId:consumerId});
+            
         }
     });
 });

@@ -34,7 +34,7 @@
         <ul class="navbar-nav pull-right">
             <%if(consumerId){%>
                 <li class="nav-item">
-                        <a class="nav-link" href="/profile">Profile</a>
+                        <a class="nav-link" href="/profile">Hi &nbsp;<%=consumer[0].cname%></a>
                         </li>
                 <li class="nav-item">
                     <form action="/logout" method="post">
@@ -51,11 +51,11 @@
         </div>
     </nav>
     <div class="consumer-profile-page container">
-        <h2 class="table-header">Profile</h2>
+        <h2 class="table-header">Welcome back, &nbsp;<%=consumer[0].cname%></h2>
         <div class="user-info-container">
-            <p><b>Name : </b><%=consumer[0].cname%></p>
+            <!-- <p><b>Name : </b><%=consumer[0].cname%></p> -->
             <p><b>Consumer No : </b><span id="cid"><%=consumer[0].cid%></span></p>
-            <p><b>Phone No : </b><<%=consumer[0].phone%></p>
+            <p><b>Phone No : </b><%=consumer[0].phone%></p>
             <p><b>Email Id : </b><%=consumer[0].email%></p>
             <p><b>Address : </b></p>
             <%consumer.forEach(function(consumer){%>

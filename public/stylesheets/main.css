@@ -1,6 +1,6 @@
+/* Body Decoration */
 body{
-    background-image: linear-gradient(#F2FDFF,#9AD4D6,#101935);
-    height: 100vh;
+    background-color: rgba(241, 241, 241, 0.692);
 }
 
 .navbar{
@@ -8,7 +8,12 @@ body{
 }
 
 /* HOMEPAGE DECORATION */
-
+.homepage-main{
+    background-image: url("../images/renewables.jpg");
+    background-size: cover;
+    position: center center;
+    height: 93vh;
+}
 
 /* LOGIN FORM DECORATION */
 .homepage-main >form {
