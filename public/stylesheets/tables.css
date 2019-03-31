@@ -14,6 +14,10 @@
     padding: 10px 0px;
     width: 20%;
 }
+.item > .delete-button:hover{
+    color: red; 
+    font-size: 0.2in;
+}
 
 .table-header{
     text-align: center;
@@ -26,4 +30,12 @@
 .search-bar > .form-inline > .form-control{
     width: 400px;
     margin-right: 10px;
+}
+
+.search-bar{
+    display: flex;
+    flex-direction: row;
+}
+.search-bar >a {
+    margin-left: 20px;
 }
