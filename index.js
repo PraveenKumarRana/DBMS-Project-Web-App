@@ -8,6 +8,7 @@ const distCompanyRoutes = require("./routes/distributionCompany");
 const consumerRoutes = require("./routes/consumerRoutes");
 const electricityBoardList = require("./routes/electricityBoardRoutes");
 const hompPageRoutes = require("./routes/homepageRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -34,6 +35,7 @@ app.use("/",electricityBoardList);
 app.use("/",powerCompanyRoutes);
 app.use("/",transCompanyRoutes);
 app.use("/",distCompanyRoutes);
+app.use("/",adminRoutes);
 
 
 // Starting the server.

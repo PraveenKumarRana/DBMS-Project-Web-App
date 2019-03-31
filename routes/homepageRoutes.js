@@ -9,7 +9,10 @@ router.get('/', function(req, res){
 });
 
 router.post('/logout', function(req, res){
+    user={};
     user.cid="";
+    admin={};
+    admin.eid="";
     res.render("homepage", {consumerId:user, admin:admin});
 });
 

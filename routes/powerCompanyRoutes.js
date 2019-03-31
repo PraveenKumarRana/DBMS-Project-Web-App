@@ -9,7 +9,7 @@ router.get("/powercompanylist", function(req,res){
             console.log(error);
         } else{
             console.log(results);
-            res.render("power_company/powerData", {result:results,consumerId:user});
+            res.render("power_company/powerData", {result:results,consumerId:user, admin:admin});
         }
     });
 });
@@ -25,7 +25,7 @@ router.post("/powercompanylist", function(req,res){
             console.log(error);
         } else{
             console.log(results);
-            res.render("power_company/powerData", {result:results,consumerId:user});
+            res.render("power_company/powerData", {result:results,consumerId:user, admin:admin});
         }
     });
 });

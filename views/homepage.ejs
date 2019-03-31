@@ -15,7 +15,9 @@
             <div class="login-welcome-page">
             </div>
             <div class="login-welcome-message">
-                <h2 style="font-size: 1in; color: white; text-shadow: 0px 0px 20px grey;">Welcome to EDS, &nbsp;<%=consumerId.cname%>!</h2>
+                <h2 style="font-size: 1in; color: white; text-shadow: 0px 0px 20px grey;">Welcome to EDS, &nbsp;
+                        <%if(consumerId.cid){%><%=consumerId.cname%>!</h2><%}%>
+                        <%if(admin.eid){%><%=admin.ename%>!</h2><%}%>
                 <a class="btn btn-primary" href="/profile">Visit Profile</a>
                 <a class="btn btn-primary" href="/billinginfo">Bill Information</a>
             </div>

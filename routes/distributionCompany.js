@@ -8,7 +8,7 @@ router.get("/distcompanylist", function(req,res){
         if(error){
             console.log(error);
         } else{
-            res.render("distribution_company/distributionData", {result:results,consumerId:user});
+            res.render("distribution_company/distributionData", {result:results,consumerId:user, admin:admin});
         }
     });
 });
@@ -23,7 +23,7 @@ router.post("/distcompanylist", function(req,res){
         if(error){
             console.log(error);
         } else{
-            res.render("distribution_company/distributionData", {result:results,consumerId:user});
+            res.render("distribution_company/distributionData", {result:results,consumerId:user, admin:admin});
         }
     });
 });
