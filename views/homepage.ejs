@@ -1,7 +1,7 @@
 <% include ./partials/header %>
     <!-- Creating the login form -->
     <div class="homepage-main">
-        <%if(!consumerId.cid){%>
+        <%if(!consumerId.cid && !admin.eid){%>
             <div class="form-display" style="margin-top: 10%">
                 <form action="/" method="post">
                     <p style="font-size: 14px; color: grey">Please login to see your details...</p>
@@ -16,10 +16,13 @@
             </div>
             <div class="login-welcome-message">
                 <h2 style="font-size: 1in; color: white; text-shadow: 0px 0px 20px grey;">Welcome to EDS, &nbsp;
-                        <%if(consumerId.cid){%><%=consumerId.cname%>!</h2><%}%>
-                        <%if(admin.eid){%><%=admin.ename%>!</h2><%}%>
-                <a class="btn btn-primary" href="/profile">Visit Profile</a>
-                <a class="btn btn-primary" href="/billinginfo">Bill Information</a>
+                        <%if(consumerId.cid){%><%=consumerId.cname%>!</h2>
+                            <a class="btn btn-primary" href="/profile">Visit Profile</a>
+                            <a class="btn btn-primary" href="/billinginfo">Bill Information</a>
+                        <%}%>
+                        <%if(admin.eid){%><%=admin.ename%>!</h2>
+                            <a class="btn btn-primary" href="/adminprofile">Visit Profile</a>    
+                        <%}%>
             </div>
         <%}%>
     </div>

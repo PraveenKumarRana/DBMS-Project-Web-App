@@ -35,7 +35,7 @@
             <%if(consumerId.cid || admin.eid){%>
                 <li class="nav-item">
                         <a class="nav-link" href="/profile">Hi &nbsp;<%if(consumerId.cid){%><%=consumerId.cname%>!</h2><%}%>
-                            <%if(admin.eid){%><%=admin.ename%>!</h2><%}%></a>
+                            <%if(admin.eid){%><%=admin.ename%></h2><%}%></a>
                         </li>
                 <li class="nav-item">
                     <form action="/logout" method="post">
@@ -43,7 +43,7 @@
                     </form>
                 </li>
             <%}%>
-            <%if(!consumerId.cid){%>
+            <%if(!consumerId.cid && !admin.eid){%>
             <li class="nav-item">
                 <a class="nav-link" href="/adminlogin">Admin Login</a>
             </li>
