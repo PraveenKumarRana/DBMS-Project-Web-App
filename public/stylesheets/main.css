@@ -39,3 +39,7 @@ body{
     margin-top: -35%;
     text-align: center;
 }
+
+.login-welcome-message >a {
+    margin: 15px 20px;
+}

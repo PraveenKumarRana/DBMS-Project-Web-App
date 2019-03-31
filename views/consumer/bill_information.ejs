@@ -34,7 +34,7 @@
         <ul class="navbar-nav pull-right">
             <%if(consumerId){%>
                 <li class="nav-item">
-                        <a class="nav-link" href="/profile">Hi &nbsp;<%=consumerId.cname%></a>
+                        <a class="nav-link" href="/profile">Hi &nbsp;<%=consumer[0].cname%></a>
                         </li>
                 <li class="nav-item">
                     <form action="/logout" method="post">
@@ -50,26 +50,18 @@
         </ul>
         </div>
     </nav>
-
-    <!-- Creating the login form -->
-    <div class="homepage-main">
-        <%if(!consumerId){%>
-        <form action="/" method="post">
-            <p style="font-size: 14px; color: grey">Please login to see your details...</p>
-            <input class="form-control" type="text" name="cid" placeholder="Consumer ID">
-            <input class="form-control" type="password" name="password" placeholder="Password">
-            <button class="btn btn-primary" type="submit">Login</button>
-        </form>
-        <%}%>
-        <%if(consumerId){%>
+    <div class="consumer-profile-page container">
+        <h2 class="table-header">Welcome back, &nbsp;<%=consumer[0].cname%></h2>
+        <div class="user-info-container">
+            <!-- <p><b>Name : </b><%=consumer[0].cname%></p> -->
+            <p><b>Consumer No : </b><span id="cid"><%=consumer[0].cid%></span></p>
+            <p><b>Phone No : </b><%=consumer[0].phone%></p>
+            <p><b>Email Id : </b><%=consumer[0].email%></p>
+            <p><b>Address : </b></p>
+            <%consumer.forEach(function(consumer){%>
+                <li><%=consumer.address%></li>
+            <%})%>
             
-            <div class="login-welcome-page">
-            </div>
-            <div class="login-welcome-message">
-                <h2 style="font-size: 1in; color: white; text-shadow: 0px 0px 20px grey;">Welcome to EDS, &nbsp;<%=consumerId.cname%>!</h2>
-                <a class="btn btn-primary" href="/profile">Visit Profile</a>
-                <a class="btn btn-primary" href="/billinginfo">Bill Information</a>
-            </div>
-        <%}%>
+        </div>
     </div>
-<% include ./partials/footer %>
+<% include ../partials/footer %>
