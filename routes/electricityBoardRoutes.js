@@ -9,7 +9,7 @@ router.get("/electricityboardlist", function(req,res){
             console.log(error);
         } else{
             console.log(results);
-            res.render("electricity_board/electricity_board_data", {result:results});
+            res.render("electricity_board/electricity_board_data", {result:results,consumerId:user});
         }
     });
 });
@@ -25,7 +25,7 @@ router.post("/electricityboardlist", function(req,res){
             console.log(error);
         } else{
             console.log(results);
-            res.render("electricity_board/electricity_board_data", {result:results});
+            res.render("electricity_board/electricity_board_data", {result:results,consumerId:user});
         }
     });
 });

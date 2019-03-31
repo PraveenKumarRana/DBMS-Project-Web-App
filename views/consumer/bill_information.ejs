@@ -50,8 +50,33 @@
         </ul>
         </div>
     </nav>
-    <div class="consumer-profile-page container">
-        <div class="user-info-container">
-        </div>
+
+    <div class="make-row container">
+        <h1 class="table-header"><%=consumerId.cname%>, &nbsp; Your Electricity Bill</h1>
+        <%billingInfo.forEach(function(bill){%>
+            <div class="item">
+                <div class="items">
+                    <p><b>Meter Number: </b><%=bill.meterno%></p>
+                    <p><b>Consumer Number: </b><%=bill.cid%></p>
+                    <p><b>Address: </b><%=bill.address%></p>
+                    <p><b>Circle: </b></p>
+                    <p><b>Division: </b><%=bill.divis%></p>
+                    <p><b>Sub Division: </b><%=bill.subdiv%></p>
+                    <p><b>Bill No. : </b><%=bill.billid%></p>
+                    <p><b>Bill Date: </b><%=bill.issuedate%></p>
+                </div>
+                <div class="items">
+                    <p><b>Bill Due Date: </b></p>
+                    <p><b>Current Meter Reading: </b><%=bill.curreading%></p>
+                    <p><b>Previous Meter Reading: </b><%=bill.prevreading%></p>
+                    <p><b>Unit Consumed: </b><%=bill.curreading - bill.prevreading%></p>
+                    <p><b>Price/Unit: </b><%=bill.rate%></p>
+                    <p><b>Total Price: </b><%=bill.rate * (bill.curreading - bill.prevreading)%></p>
+                </div>
+                <div style="height: 20px; border-bottom: 1px solid blue; margin-bottom: 20px">
+
+                </div>
+            </div>
+        <%});%>
     </div>
 <% include ../partials/footer %>

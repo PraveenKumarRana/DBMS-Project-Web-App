@@ -8,7 +8,7 @@ router.get("/transmissioncompanylist", function(req,res){
         if(error){
             console.log(error);
         } else{
-            res.render("transmission_company/transmissiongData", {result:results});
+            res.render("transmission_company/transmissiongData", {result:results,consumerId:user});
         }
     });
 });
@@ -23,7 +23,7 @@ router.post("/transmissioncompanylist", function(req,res){
         if(error){
             console.log(error);
         } else{
-            res.render("transmission_company/transmissiongData", {result:results});
+            res.render("transmission_company/transmissiongData", {result:results,consumerId:user});
         }
     });
 });

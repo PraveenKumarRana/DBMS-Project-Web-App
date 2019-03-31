@@ -31,5 +31,22 @@
                 <a class="nav-link" href="/powercompanylist">Power Company</a>
             </li>
         </ul>
+        <ul class="navbar-nav pull-right">
+            <%if(consumerId.cid){%>
+                <li class="nav-item">
+                        <a class="nav-link" href="/profile">Hi &nbsp;<%=consumerId.cname%></a>
+                        </li>
+                <li class="nav-item">
+                    <form action="/logout" method="post">
+                        <input style="border: 0px; margin-top:7px; margin-left: 10px ; background-color: gainsboro" type="submit" value="Logout"></input>
+                    </form>
+                </li>
+            <%}%>
+            <%if(!consumerId.cid){%>
+            <li class="nav-item">
+                <a class="nav-link" href="/adminlogin">Admin Login</a>
+            </li>
+            <%}%>
+        </ul>
         </div>
     </nav>

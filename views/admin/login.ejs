@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/tables.css">
+    <title>Electricity Distribution System</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">EDS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+            <a class="nav-link" href="/electricityboardlist">Electricity Board</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/distcompanylist">Distribution Company</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/transmissioncompanylist">Transmission Company</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/powercompanylist">Power Company</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav pull-right">
+            <%if(admin.eid){%>
+                <li class="nav-item">
+                        <a class="nav-link" href="/profile">Hi &nbsp;<%=admin.ename%></a>
+                        </li>
+                <li class="nav-item">
+                    <form action="/logout" method="post">
+                        <input style="border: 0px; margin-top:7px; margin-left: 10px ; background-color: gainsboro" type="submit" value="Logout"></input>
+                    </form>
+                </li>
+            <%}%>
+            <%if(!admin.eid){%>
+            <li class="nav-item">
+                <a class="nav-link" href="/adminlogin">Admin Login</a>
+            </li>
+            <%}%>
+        </ul>
+        </div>
+    </nav>
+    <!-- Creating the login form -->
+    <div class="homepage-main">
+        <%if(!admin.eid){%>
+            <div class="form-display" style="margin-top: 10%">
+                <form action="/adminlogin" method="post">
+                    <p style="text-align:center; color: red; font-size: 25px;">Employee Login</p>
+                    <input class="form-control" type="text" name="eid" placeholder="Employee ID">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                    <button class="btn btn-danger" type="submit">Login</button>
+                </form>
+            </div>
+        <%}%>
+        <%if(admin.eid){%>
+            
+            <div class="login-welcome-page">
+            </div>
+            <div class="login-welcome-message">
+                <h2 style="font-size: 1in; color: white; text-shadow: 0px 0px 20px grey;">Welcome to EDS, &nbsp;<%=admin.ename%>!</h2>
+                <a class="btn btn-primary" href="/profile">Visit Profile</a>
+                <a class="btn btn-primary" href="/billinginfo">Bill Information</a>
+            </div>
+        <%}%>
+    </div>
+<% include ../partials/footer %>
