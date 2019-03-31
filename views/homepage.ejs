@@ -32,7 +32,7 @@
             </li>
         </ul>
         <ul class="navbar-nav pull-right">
-            <%if(consumerId){%>
+            <%if(consumerId.cid){%>
                 <li class="nav-item">
                         <a class="nav-link" href="/profile">Hi &nbsp;<%=consumerId.cname%></a>
                         </li>
@@ -42,7 +42,7 @@
                     </form>
                 </li>
             <%}%>
-            <%if(!consumerId){%>
+            <%if(!consumerId.cid){%>
             <li class="nav-item">
             <a class="nav-link" href="/admin/login">Admin Login</a>
             </li>
@@ -50,18 +50,19 @@
         </ul>
         </div>
     </nav>
-
     <!-- Creating the login form -->
     <div class="homepage-main">
-        <%if(!consumerId){%>
-        <form action="/" method="post">
-            <p style="font-size: 14px; color: grey">Please login to see your details...</p>
-            <input class="form-control" type="text" name="cid" placeholder="Consumer ID">
-            <input class="form-control" type="password" name="password" placeholder="Password">
-            <button class="btn btn-primary" type="submit">Login</button>
-        </form>
+        <%if(!consumerId.cid){%>
+            <div class="form-display" style="margin-top: 10%">
+                <form action="/" method="post">
+                    <p style="font-size: 14px; color: grey">Please login to see your details...</p>
+                    <input class="form-control" type="text" name="cid" placeholder="Consumer ID">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                    <button class="btn btn-primary" type="submit">Login</button>
+                </form>
+            </div>
         <%}%>
-        <%if(consumerId){%>
+        <%if(consumerId.cid){%>
             
             <div class="login-welcome-page">
             </div>

@@ -32,9 +32,9 @@
             </li>
         </ul>
         <ul class="navbar-nav pull-right">
-            <%if(consumerId){%>
+            <%if(consumerId.cid){%>
                 <li class="nav-item">
-                        <a class="nav-link" href="/profile">Hi &nbsp;<%=consumer[0].cname%></a>
+                        <a class="nav-link" href="/profile">Hi &nbsp;<%=consumerId.cname%></a>
                         </li>
                 <li class="nav-item">
                     <form action="/logout" method="post">
@@ -42,7 +42,7 @@
                     </form>
                 </li>
             <%}%>
-            <%if(!consumerId){%>
+            <%if(!consumerId.cid){%>
             <li class="nav-item">
             <a class="nav-link" href="/admin/login">Admin Login</a>
             </li>
@@ -64,8 +64,4 @@
             
         </div>
     </div>
-    <script>
-        var cid = document.getElementById("cid").innerText;
-        localStorage.setItem("consumerId",cid);
-    </script>
 <% include ../partials/footer %>

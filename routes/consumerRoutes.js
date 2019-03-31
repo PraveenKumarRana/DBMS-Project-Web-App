@@ -2,24 +2,17 @@ const express = require("express");
 const router = express.Router();
 const connection = require("../models/index");
 
-router.get("/profile", function(req, res){
-        var q = `select * from managesession;`;
-        connection.query(q, function(error, results){
-            if(error){
-                console.log("Error generated during fetch of the information.");
-            } else {
-                var consumerId = results[0].cid;
-                q = `select * from consumer where cid=${consumerId};`;
-                connection.query(q, function(error, results){
-                    if(error){
-                        console.log("Error generated during fetch of the information.");
-                    } else {
-                        console.log(results);
-                        res.render("consumer/profile_page" , {consumer:results, consumerId:consumerId});
-                    }
-                });
-            }
-        });
+router.get("/billinginfo", function(req,res){
+    var loggedId = user.cid;
+    q = `select * from billinginfo where cid=${loggedId}`;
+    connection.query(q, function(error, results){
+        if(error){
+            console.log("Error generated while getting the billing info!");
+        } else {
+            console.log(user);
+            res.render("consumer/bill_information", {billingInfo: results, consumerId:user});
+        }
+    })
 });
 
 module.exports = router;
