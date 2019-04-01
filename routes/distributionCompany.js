@@ -28,13 +28,16 @@ router.post("/distcompanylist", function(req,res){
     });
 });
 
+router.get("/distcompanylist/new", function(req, res, next){
+    res.render("distribution_company/new",{consumerId:user, admin:admin});
+});
 
 router.post("/distcompanylist/new", function(req, res, next){
-    var q = `insert into distributioncompany values(${req.body.tid},"${req.body.dname}",${req.body.tenure},"${req.body.state}",${req.body.tid});`;
+    var q = `insert into distributioncompany values(${req.body.did},"${req.body.dname}",${req.body.tenure},"${req.body.state}",${req.body.tid});`;
     console.log(q);
     connection.query(q, function(error, results, fields){
         if(error) throw error;
-        res.json(results);
+        res.redirect("/distcompanylist");
     });
 });
 

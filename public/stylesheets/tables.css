@@ -39,3 +39,28 @@
 .search-bar >a {
     margin-left: 20px;
 }
+
+/* Add New form. */
+.add-new-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.add-new-form-item{
+    display: flex;
+    flex-direction: row;
+    flex-basis: 300px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 13px;
+}
+
+.add-new-form>.add-new-form-item>label{
+    margin-right: 20px;
+    line-height: 100%;
+    padding-top: 10px;
+    font-weight: bold;
+}
