@@ -25,6 +25,19 @@
                 <p><%= transCompany.state %></p>
                 <p><%= transCompany.tid %></p>
             </div>
+            <div class="item">
+                <div>
+                    <form action="/distcompanylist/update" method="post">
+                        <a class="btn btn-info" style="margin-right: 10px" key="<%= transCompany.did %>" href="/distcompanylist/update">Update</a>
+                    </form>
+                </div>
+                <div>
+                    <form action="/distcompanylist/delete" method="post">
+                        <a class="btn btn-danger" key="<%= transCompany.did %>" href="/distcompanylist/delete">Delete</a>
+                    </form>
+                </div>
+            </div>
+            
         <%});%>
     </div>
 <% include ../partials/footer %>

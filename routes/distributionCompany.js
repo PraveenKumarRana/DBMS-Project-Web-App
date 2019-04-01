@@ -28,6 +28,7 @@ router.post("/distcompanylist", function(req,res){
     });
 });
 
+// Adding new distribution company.
 router.get("/distcompanylist/new", function(req, res, next){
     res.render("distribution_company/new",{consumerId:user, admin:admin});
 });
@@ -40,5 +41,8 @@ router.post("/distcompanylist/new", function(req, res, next){
         res.redirect("/distcompanylist");
     });
 });
+
+// Deleting distribution company.
+router.delete("/distcompanylist/delete")
 
 module.exports = router;
