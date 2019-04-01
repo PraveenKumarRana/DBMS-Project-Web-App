@@ -43,6 +43,24 @@ router.post("/distcompanylist/new", function(req, res, next){
 });
 
 // Deleting distribution company.
-router.delete("/distcompanylist/delete")
+router.post("/distcompanylist/delete",function(req,res){
+    console.log("printing from distcompanylist/delete route.");
+    var did = req.body.name;
+    var q = `delete from distributioncompany where did=${did}`;
+    connection.query(q, function(error, results){
+        if(error){
+            console.log("Problem in deleting the value.");
+        } else {
+            res.redirect("/distcompanylist");
+        }
+    })
+});
+
+// Update distribution company.
+router.post("/distcompanylist/update",function(req,res){
+    console.log("printing from distcompanylist/delete route.");
+    console.log(req.body);
+    res.redirect("/distcompanylist");
+});
 
 module.exports = router;

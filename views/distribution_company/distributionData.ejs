@@ -28,12 +28,14 @@
             <div class="item">
                 <div>
                     <form action="/distcompanylist/update" method="post">
-                        <a class="btn btn-info" style="margin-right: 10px" key="<%= transCompany.did %>" href="/distcompanylist/update">Update</a>
+                        <input class="get-id" name="name" value="<%= transCompany.did %>"></input>
+                        <input type="submit" class="btn btn-info" style="margin-right: 10px" value="Update"></input>
                     </form>
                 </div>
                 <div>
                     <form action="/distcompanylist/delete" method="post">
-                        <a class="btn btn-danger" key="<%= transCompany.did %>" href="/distcompanylist/delete">Delete</a>
+                        <input class="get-id" name="name" value="<%= transCompany.did %>"></input>
+                        <input type="submit" class="btn btn-danger" value="Delete"></input>
                     </form>
                 </div>
             </div>

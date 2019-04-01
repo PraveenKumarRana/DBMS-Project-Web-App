@@ -63,3 +63,11 @@
     padding-top: 10px;
     font-weight: bold;
 }
+
+/* GETTING DATA FOR DELETING AND UPDATING INFO. */
+form > .get-id{
+    height: 0px;
+    width: 0px;
+    border: 0px;
+    display: hide;
+}
