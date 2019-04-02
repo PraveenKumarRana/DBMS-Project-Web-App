@@ -28,15 +28,6 @@ router.post("/transmissioncompanylist", function(req,res){
     });
 });
 
-// router.post("/transmissioncompanylist/new", function(req, res, next){
-//     var q = `insert into transmissioncompany values(${req.body.tid},"${req.body.tname}",${req.body.did},${req.body.tcapacity},"${req.body.state}",${req.body.tenure});`;
-//     console.log(q);
-//     connection.query(q, function(error, results, fields){
-//         if(error) throw error;
-//         res.json(results);
-//     });
-// });
-
 // Adding new distribution company.
 router.get("/transmissioncompany/new", function(req, res, next){
     res.render("transmission_company/new",{consumerId:user, admin:admin});
