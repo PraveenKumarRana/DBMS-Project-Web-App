@@ -29,6 +29,7 @@ body{
     flex-direction: column;
     justify-content: center;
     box-shadow: 0px 0px 4px  black;
+    background-color: rgba(7, 7, 61, 0.342);
 }
 
 .form-display >form >.form-control{
