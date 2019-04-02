@@ -30,7 +30,11 @@ router.post("/distcompanylist", function(req,res){
 
 // Adding new distribution company.
 router.get("/distcompany/new", function(req, res, next){
-    res.render("distribution_company/new",{consumerId:user, admin:admin});
+    if(admin.designation==="designation5"){
+        res.render("distribution_company/new",{consumerId:user, admin:admin});
+    } else {
+        res.redirect("/adminlogin");
+    }
 });
 
 router.post("/distcompany/new", function(req, res, next){
@@ -48,16 +52,20 @@ router.post("/distcompany/new", function(req, res, next){
 
 // Update distribution company.
 router.post("/distcompany/update",function(req,res){
-    console.log("printing from distcompanylist/update route.");
-    var did = req.body.name;
-    var q = `select * from distributioncompany where did=${did}`;
-    connection.query(q, function(error, results){
-        if(error){
-            console.log("Problem in deleting the value.");
-        } else {
-            res.render("distribution_company/update",{result:results[0],consumerId:user, admin:admin});
-        }
-    })
+    if(admin.designation==="designation5"){
+        console.log("printing from distcompanylist/update route.");
+        var did = req.body.name;
+        var q = `select * from distributioncompany where did=${did}`;
+        connection.query(q, function(error, results){
+            if(error){
+                console.log("Problem in deleting the value.");
+            } else {
+                res.render("distribution_company/update",{result:results[0],consumerId:user, admin:admin});
+            }
+        })
+    } else {
+        res.redirect("/adminlogin");
+    }
 });
 router.post("/distcompany/updating", function(req, res){
     if(admin.designation==="designation5"){
@@ -75,6 +83,7 @@ router.post("/distcompany/updating", function(req, res){
 
 // Deleting distribution company.
 router.post("/distcompany/delete",function(req,res){
+    if(admin.designation==="designation5"){
     console.log("printing from distcompanylist/delete route.");
     var did = req.body.name;
     var q = `delete from distributioncompany where did=${did}`;
@@ -85,6 +94,9 @@ router.post("/distcompany/delete",function(req,res){
             res.redirect("/distcompanylist");
         }
     })
+    } else {
+        res.redirect("/adminlogin");
+    }
 });
 
 

@@ -30,7 +30,11 @@ router.post("/transmissioncompanylist", function(req,res){
 
 // Adding new distribution company.
 router.get("/transmissioncompany/new", function(req, res, next){
+    if(admin.designation==="designation5"){
     res.render("transmission_company/new",{consumerId:user, admin:admin});
+    } else {
+        res.redirect("/adminlogin");
+    }
 });
 
 router.post("/transmissioncompany/new", function(req, res, next){
@@ -48,6 +52,7 @@ router.post("/transmissioncompany/new", function(req, res, next){
 
 // Update distribution company.
 router.post("/transmissioncompany/update",function(req,res){
+    if(admin.designation==="designation5"){
     console.log("printing from distcompanylist/update route.");
     var tid = req.body.name;
     var q = `select * from transmissioncompany where tid=${tid}`;
@@ -58,6 +63,9 @@ router.post("/transmissioncompany/update",function(req,res){
             res.render("transmission_company/update",{result:results[0],consumerId:user, admin:admin});
         }
     })
+    } else {
+        res.redirect("/adminlogin");
+    }
 });
 router.post("/transmissioncompany/updating", function(req, res){
     if(admin.designation==="designation5"){

@@ -32,7 +32,11 @@ router.post("/powercompanylist", function(req,res){
 
 // Adding new distribution company.
 router.get("/powercompany/new", function(req, res, next){
+    if(admin.designation==="designation5"){
     res.render("power_company/new",{consumerId:user, admin:admin});
+    } else {
+        res.redirect("/adminlogin");
+    }
 });
 
 router.post("/powercompany/new", function(req, res, next){
@@ -50,16 +54,20 @@ router.post("/powercompany/new", function(req, res, next){
 
 // Update distribution company.
 router.post("/powercompany/update",function(req,res){
-    console.log("printing from distcompanylist/update route.");
-    var pid = req.body.name;
-    var q = `select * from powercompany where pid=${pid}`;
-    connection.query(q, function(error, results){
-        if(error){
-            console.log("Problem in deleting the value.");
-        } else {
-            res.render("power_company/update",{result:results[0],consumerId:user, admin:admin});
-        }
-    })
+    if(admin.designation==="designation5"){
+        console.log("printing from distcompanylist/update route.");
+        var pid = req.body.name;
+        var q = `select * from powercompany where pid=${pid}`;
+        connection.query(q, function(error, results){
+            if(error){
+                console.log("Problem in deleting the value.");
+            } else {
+                res.render("power_company/update",{result:results[0],consumerId:user, admin:admin});
+            }
+        })
+    } else {
+        res.redirect("/adminlogin");
+    }
 });
 
 router.post("/powercompany/updating", function(req, res){
