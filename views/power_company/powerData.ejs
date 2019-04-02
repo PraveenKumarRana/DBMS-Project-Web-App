@@ -7,6 +7,9 @@
                 <input class="form-control" type="search" placeholder="Search by State" name="state"></input>
                 <input class="btn btn-primary" type="submit" value="Search"></input>
             </form>
+            <%if(admin.eid && admin.designation==="designation5"){%>
+                <a class="btn btn-success" href="/powercompany/new">Add New</a>
+            <%}%>
         </div>
         <div class="item">
             <p><b>PID</b></p>
@@ -16,6 +19,7 @@
             <p><b>Location</b></p>
         </div>
         <%result.forEach(function(powerCompany){%>
+            <div style="background-color: rgb(252, 252, 252); margin: 5px 0px;">
             <div class="item">
                 <p><%= powerCompany.pid %></p>
                 <p><%= powerCompany.pname %></p>
@@ -23,7 +27,23 @@
                 <p><%= powerCompany.type %></p>
                 <p><%= powerCompany.state %></p>
             </div>
-            
+            <%if(admin.eid && admin.designation==="designation5"){%>
+                <div class="item">
+                    <div>
+                        <form action="/powercompany/update"  method="post">
+                            <input class="get-id" name="name" value="<%= powerCompany.pid %>"></input>
+                            <input type="submit" class="btn btn-info" style="margin-right: 10px" value="Update"></input>
+                        </form>
+                    </div>
+                    <div>
+                        <form action="/powercompany/delete" method="post">
+                            <input class="get-id" name="name" value="<%= powerCompany.pid %>"></input>
+                            <input type="submit" class="btn btn-danger" value="Delete"></input>
+                        </form>
+                    </div>
+                </div>
+                <%}%>
+            </div>
         <%});%>
     </div>
 <% include ../partials/footer %>

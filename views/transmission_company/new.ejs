@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+    <div class="make-row container">
+        <h1 class="table-header">Add Transmission Company</h1>
+            <form class="add-new-form" style="align-items: center;" action="/transmissioncompany/new" method="post">
+                <div class="add-new-form-item">
+                <label>TID</label><input class="form-control" type="text" name="tid"></input></div>
+                <div class="add-new-form-item">
+                <label>TNAME</label><input class="form-control" type="text" name="tname"></input></div>
+                <div class="add-new-form-item">
+                <label>DID</label><input class="form-control" type="text" name="did"></input></div>
+                <div class="add-new-form-item">
+                <label>Total Capacity</label><input class="form-control" type="text" name="tcapacity"></input></div>
+                <div class="add-new-form-item">
+                <label>State</label><input class="form-control" type="text" name="state"></input></div>
+                <div class="add-new-form-item">
+                <label>Tenure</label><input class="form-control" type="text" name="tenure"></input></div>
+                <div class="add-new-form-item">
+                <label>PID</label><input class="form-control" type="text" name="pid"></input></div>
+                <div class="add-new-form-item">
+                <input type="submit" class="btn btn-success btn-block" value="Submit"></input>
+                </div>
+            </form>
+    </div>
+<% include ../partials/footer %>

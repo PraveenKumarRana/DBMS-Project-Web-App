@@ -7,6 +7,9 @@
                 <input class="form-control" type="search" placeholder="Search by State" name="state"></input>
                 <input class="btn btn-primary" type="submit" value="Search"></input>
             </form>
+            <%if(admin.eid && admin.designation==="designation5"){%>
+                <a class="btn btn-success" href="/electricityboard/new">Add New</a>
+            <%}%>
         </div>
         <div class="item">
             <p><b>Board Name</b></p>
@@ -16,6 +19,7 @@
             <p><b>Power Consumed</b></p>
         </div>
         <%result.forEach(function(electricityboard){%>
+            <div style="background-color: rgb(252, 252, 252); margin: 5px 0px;">
             <div class="item">
                 <p><%= electricityboard.boardname %></p>
                 <p><%= electricityboard.noofconsumer %></p>
@@ -23,7 +27,23 @@
                 <p><%= electricityboard.chairmanid %></p>
                 <p><%= electricityboard.powerconsumed %></p>
             </div>
-            
+            <%if(admin.eid && admin.designation==="designation5"){%>
+                <div class="item">
+                    <div>
+                        <form action="/electricityboard/update"  method="post">
+                            <input class="get-id" name="name" value="<%= electricityboard.chairmanid %>"></input>
+                            <input type="submit" class="btn btn-info" style="margin-right: 10px" value="Update"></input>
+                        </form>
+                    </div>
+                    <div>
+                        <form action="/electricityboard/delete" method="post">
+                            <input class="get-id" name="name" value="<%= electricityboard.chairmanid %>"></input>
+                            <input type="submit" class="btn btn-danger" value="Delete"></input>
+                        </form>
+                    </div>
+                </div>
+                <%}%>
+            </div>
         <%});%>
     </div>
 <% include ../partials/footer %>

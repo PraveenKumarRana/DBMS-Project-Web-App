@@ -7,6 +7,9 @@
                 <input class="form-control" type="search" placeholder="Search by State" name="state"></input>
                 <input class="btn btn-primary" type="submit" value="Search"></input>
             </form>
+            <%if(admin.eid && admin.designation==="designation5"){%>
+                <a class="btn btn-success" href="/transmissioncompany/new">Add New</a>
+            <%}%>
         </div>
         <div class="item">
             <p><b>TID</b></p>
@@ -17,6 +20,7 @@
             <p><b>Tenure</b></p>
         </div>
         <%result.forEach(function(transCompany){%>
+            <div style="background-color: rgb(252, 252, 252); margin: 5px 0px;">
             <div class="item">
                 <p><%= transCompany.tid %></p>
                 <p><%= transCompany.tname %></p>
@@ -25,7 +29,23 @@
                 <p><%= transCompany.state %></p>
                 <p><%= transCompany.tenure %></p>
             </div>
-
+            <%if(admin.eid && admin.designation==="designation5"){%>
+                <div class="item">
+                    <div>
+                        <form action="/transmissioncompany/update"  method="post">
+                            <input class="get-id" name="name" value="<%= transCompany.tid %>"></input>
+                            <input type="submit" class="btn btn-info" style="margin-right: 10px" value="Update"></input>
+                        </form>
+                    </div>
+                    <div>
+                        <form action="/transmissioncompany/delete" method="post">
+                            <input class="get-id" name="name" value="<%= transCompany.tid %>"></input>
+                            <input type="submit" class="btn btn-danger" value="Delete"></input>
+                        </form>
+                    </div>
+                </div>
+                <%}%>
+            </div>
         <%});%>
     </div>
 <% include ../partials/footer %>
