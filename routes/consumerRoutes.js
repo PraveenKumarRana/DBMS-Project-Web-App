@@ -2,6 +2,12 @@ const express = require("express");
 const router = express.Router();
 const connection = require("../models/index");
 
+var newconnection = {
+    state_ut:"",
+    distributioncompany:"",
+    division:"",
+    subdivision:""
+}
 
 router.get("/profile", function(req, res){
     var consumerId = user.cid;
@@ -72,6 +78,12 @@ router.get("/newconnection", function(req, res){
 });
 
 router.post("/newconnection", function(req, res){
-})
+    res.render("consumer/new_connection_next_form", {consumerId:user, admin:admin});
+});
+
+router.post("/newconnection/add", function(req, res){
+    // This will be adding the data given be the user to the newconnection database for aprooval.
+    res.redirect("/");
+});
 
 module.exports = router;
