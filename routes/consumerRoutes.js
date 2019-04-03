@@ -64,4 +64,14 @@ router.post('/', function(req, res){
     });
 });
 
+//===================================================
+//          APPLY FOR NEW CONNECTION ROUTES
+//===================================================
+router.get("/newconnection", function(req, res){
+    res.render("consumer/new_connection_form", {consumerId:user, admin:admin});
+});
+
+router.post("/newconnection", function(req, res){
+})
+
 module.exports = router;

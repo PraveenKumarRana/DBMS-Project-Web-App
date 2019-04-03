@@ -1,0 +1,37 @@
+<% include ../partials/header %>
+    <div class="new-connection-form container">
+        <h1 class="table-header">Apply for New Connection</h1>
+        <form action="/newconnection" method="post">
+            <div class="display-inline">
+                <label>State/UT : </label><select class="form-control" name="state_ut">
+                    <option value=""></option>
+                    <option>Jharkhand</option>
+                    <option>Maharastra</option>
+                </select>
+            </div>
+            <div class="display-inline">
+                <label>Distribution Company : </label><select class="form-control" name="distributioncompany">
+                    <option value=""></option>
+                    <option>Jharkhand Bijli Vitran</option>
+                    <option>Maharastra Bijli Vitran</option>
+                </select>
+            </div>
+            <div class="display-inline">
+                <label>Division : </label><select class="form-control" name="division">
+                    <option value=""></option>
+                    <option>Jhar</option>
+                    <option>Maha</option>
+                </select>
+            </div>
+            <div class="display-inline">
+                <label>Sub Division : </label><select class="form-control" name="subdivision">
+                    <option value=""></option>
+                    <option>J</option>
+                    <option>M</option>
+                </select>
+            </div>
+            
+            <input type="submit" class="btn btn-success" value="Submit"></form>
+        </form>
+    </div>
+<% include ../partials/footer %>
