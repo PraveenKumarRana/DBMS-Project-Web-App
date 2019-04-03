@@ -22,7 +22,10 @@
                             <a class="btn btn-primary" href="/billinginfo">Bill Information</a>
                         <%}%>
                         <%if(admin.eid){%><%=admin.ename%>!</h2>
-                            <a class="btn btn-primary" href="/adminprofile">Visit Profile</a>    
+                            <a class="btn btn-primary" href="/adminprofile">Visit Profile</a>
+                            <%if(admin.designation=="designation5"){%>
+                                <a class="btn btn-warning" href="/newconnection/requests">Connection Requests</a>   
+                            <%}%>
                         <%}%>
             </div>
         <%}%>

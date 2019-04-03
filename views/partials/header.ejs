@@ -35,9 +35,9 @@
         <ul class="navbar-nav pull-right">
             <%if(consumerId.cid || admin.eid){%>
                 <li class="nav-item">
-                        <a class="nav-link" href="/profile">Hi &nbsp;<%if(consumerId.cid){%><%=consumerId.cname%>!</h2><%}%>
-                            <%if(admin.eid){%><%=admin.ename%></h2><%}%></a>
-                        </li>
+                    <a class="nav-link" href="/profile">Hi, &nbsp;<%if(consumerId.cid){%><%=consumerId.cname%><%}%>
+                    <%if(admin.eid){%><%=admin.ename%><%}%></a>
+                </li>
                 <li class="nav-item">
                     <form action="/logout" method="post">
                         <input style="border: 0px; margin-top:7px; margin-left: 10px ; background-color: gainsboro" type="submit" value="Logout"></input>

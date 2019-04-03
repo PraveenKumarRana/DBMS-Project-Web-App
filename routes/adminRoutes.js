@@ -27,4 +27,12 @@ router.post("/adminlogin", function(req,res){
     });
 });
 
+
+//==========================
+// New connection requests
+//==========================
+router.get("/newconnection/requests", function(req,res){
+    res.render("admin/newconnectionrequest", {consumerId:user, admin:admin})
+});
+
 module.exports = router;
