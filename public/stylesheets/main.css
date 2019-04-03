@@ -11,7 +11,7 @@ body{
 
 /* HOMEPAGE DECORATION */
 .homepage-main{
-    background-image: url("../images/renewables.jpg");
+    background-image: url("https://www.bp.com/content/dam/bp/business-sites/en/global/corporate/images-jpg-png/energy-economics/power-station-stats-review.jpg.img.3840.medium.jpg");
     background-size: cover;
     position: center center;
     height: 93vh;

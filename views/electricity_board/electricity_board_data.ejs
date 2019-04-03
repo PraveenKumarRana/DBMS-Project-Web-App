@@ -31,13 +31,13 @@
                 <div class="item">
                     <div>
                         <form action="/electricityboard/update"  method="post">
-                            <input class="get-id" name="name" value="<%= electricityboard.chairmanid %>"></input>
+                            <input class="get-id" name="name" value="<%= electricityboard.boardname %>"></input>
                             <input type="submit" class="btn btn-info" style="margin-right: 10px" value="Update"></input>
                         </form>
                     </div>
                     <div>
                         <form action="/electricityboard/delete" method="post">
-                            <input class="get-id" name="name" value="<%= electricityboard.chairmanid %>"></input>
+                            <input class="get-id" name="name" value="<%= electricityboard.boardname %>"></input>
                             <input type="submit" class="btn btn-danger" value="Delete"></input>
                         </form>
                     </div>

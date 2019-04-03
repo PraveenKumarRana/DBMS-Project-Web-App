@@ -30,13 +30,74 @@ router.post("/electricityboardlist", function(req,res){
     });
 });
 
-router.post("/electricityboardlist/new", function(req, res, next){
-    var q = `insert into electricityboard values(${req.body.pid},"${req.body.pname}","${req.body.type}",${req.body.totalpower},"${req.body.state}")`;
-    console.log(q);
-    connection.query(q, function(error, results, fields){
-        if(error) throw error;
-        res.json(results);
-    });
+// Adding new distribution company.
+router.get("/electricityboard/new", function(req, res, next){
+    if(admin.designation==="designation5"){
+        res.render("electricity_board/new",{consumerId:user, admin:admin});
+    } else {
+        res.redirect("/adminlogin");
+    }
 });
 
+router.post("/electricityboard/new", function(req, res, next){
+    if(admin.designation==="designation5"){
+        var q = `insert into electricityboard values("${req.body.boardname}",${req.body.noofconsumer},"${req.body.state}",${req.body.chairmanid},${req.body.powerconsumed});`;
+        console.log(q);
+        connection.query(q, function(error, results, fields){
+            if(error) throw error;
+            res.redirect("/electricityboardlist");
+        });
+    } else {
+        res.redirect("/adminlogin");
+    }
+});
+
+// Update distribution company.
+router.post("/electricityboard/update",function(req,res){
+    if(admin.designation==="designation5"){
+        console.log("printing from distcompanylist/update route.");
+        var boardname = req.body.name;
+        var q = `select * from electricityboard where boardname="${boardname}"`;
+        connection.query(q, function(error, results){
+            if(error){
+                console.log("Problem in deleting the value.");
+            } else {
+                res.render("electricity_board/update",{result:results[0],consumerId:user, admin:admin});
+            }
+        })
+    } else {
+        res.redirect("/adminlogin");
+    }
+});
+router.post("/electricityboard/updating", function(req, res){
+    if(admin.designation==="designation5"){
+        var q = `update electricityboard set noofconsumer=${req.body.noofconsumer},state="${req.body.state}",chairmanid=${req.body.chairmanid}, powerconsumed=${req.body.powerconsumed} where boardname="${req.body.boardname}";`;
+        console.log(q);
+        connection.query(q, function(error, results, fields){
+            if(error) throw error;
+            res.redirect("/electricityboardlist");
+        });
+    } else {
+        res.redirect("/adminlogin");
+    }
+})
+
+
+// Deleting distribution company.
+router.post("/electricityboard/delete",function(req,res){
+    if(admin.designation==="designation5"){
+    console.log("printing from distcompanylist/delete route.");
+    var boardname = req.body.name;
+    var q = `delete from electricityboard where boardname="${boardname}"`;
+    connection.query(q, function(error, results){
+        if(error){
+            console.log("Problem in deleting the value.");
+        } else {
+            res.redirect("/electricityboardlist");
+        }
+    })
+    } else {
+        res.redirect("/adminlogin");
+    }
+});
 module.exports = router;

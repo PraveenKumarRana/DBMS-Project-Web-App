@@ -1,17 +1,17 @@
 <% include ../partials/header %>
     <div class="make-row container">
-        <h1 class="table-header">Update Distribution Company</h1>
-            <form class="add-new-form" style="align-items: center;" action="/distcompany/updating" method="post">
+        <h1 class="table-header">Add Electricity Board</h1>
+            <form class="add-new-form" style="align-items: center;" action="/electricityboard/updating" method="post">
                 <div class="add-new-form-item">
-                <label>DID</label><input class="form-control" type="text" value="<%=result.did%>" name="did" readonly></input></div>
+                <label>Board Name</label><input class="form-control" type="text" name="boardname" value="<%=result.boardname%>" readonly></input></div>
                 <div class="add-new-form-item">
-                <label>DNAME</label><input class="form-control" type="text"  value="<%=result.dname%>" name="dname"></input></div>
+                <label>No. of Consumer</label><input class="form-control" type="text" name="noofconsumer" value="<%=result.noofconsumer%>"></input></div>
                 <div class="add-new-form-item">
-                <label>Tenure</label><input class="form-control" type="text" value="<%=result.tenure%>"  name="tenure"></input></div>
+                <label>State</label><input class="form-control" type="text" name="state" value="<%=result.state%>"></input></div>
                 <div class="add-new-form-item">
-                <label>State</label><input class="form-control" type="text" value="<%=result.state%>"  name="state"></input></div>
+                <label>Chairman Id</label><input class="form-control" type="text" name="chairmanid" value="<%=result.chairmanid%>"></input></div>
                 <div class="add-new-form-item">
-                <label>TID</label><input class="form-control" type="text" value="<%=result.tid%>"  name="tid"></input></div><br>
+                <label>Power Consumed</label><input class="form-control" type="text" name="powerconsumed" value="<%=result.powerconsumed%>"></input></div><br>
                 <div class="add-new-form-item">
                 <input type="submit" class="btn btn-success btn-block" value="Submit"></input>
                 </div>

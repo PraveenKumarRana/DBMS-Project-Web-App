@@ -1,17 +1,17 @@
 <% include ../partials/header %>
     <div class="make-row container">
-        <h1 class="table-header">Add Distribution Company</h1>
-            <form class="add-new-form" style="align-items: center;" action="/distcompany/new" method="post">
+        <h1 class="table-header">Add Electricity Board</h1>
+            <form class="add-new-form" style="align-items: center;" action="/electricityboard/new" method="post">
                 <div class="add-new-form-item">
-                <label>DID</label><input class="form-control" type="text" name="did"></input></div>
+                <label>Board Name</label><input class="form-control" type="text" name="boardname"></input></div>
                 <div class="add-new-form-item">
-                <label>DNAME</label><input class="form-control" type="text" name="dname"></input></div>
-                <div class="add-new-form-item">
-                <label>Tenure</label><input class="form-control" type="text" name="tenure"></input></div>
+                <label>No. of Consumer</label><input class="form-control" type="text" name="noofconsumer"></input></div>
                 <div class="add-new-form-item">
                 <label>State</label><input class="form-control" type="text" name="state"></input></div>
                 <div class="add-new-form-item">
-                <label>TID</label><input class="form-control" type="text" name="tid"></input></div><br>
+                <label>Chairman Id</label><input class="form-control" type="text" name="chairmanid"></input></div>
+                <div class="add-new-form-item">
+                <label>Power Consumed</label><input class="form-control" type="text" name="powerconsumed"></input></div><br>
                 <div class="add-new-form-item">
                 <input type="submit" class="btn btn-success btn-block" value="Submit"></input>
                 </div>
