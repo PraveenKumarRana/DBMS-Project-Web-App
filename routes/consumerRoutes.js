@@ -86,6 +86,8 @@ router.post("/newconnection", function(req, res){
     newconnection.distributioncompany = req.body.distributioncompany;
     newconnection.division = req.body.division;
     if(newconnection.subdivision){
+        console.log("All the detail of the user.");
+        console.log(newconnection);
         res.render("consumer/new_connection_next_form", {newconnection:newconnection,consumerId:user, admin:admin});
     } else {
         if(newconnection.state_ut){
@@ -184,6 +186,41 @@ router.post("/newconnection", function(req, res){
 
 router.post("/newconnection/add", function(req, res){
     // This will be adding the data given be the user to the newconnection database for aprooval.
+    console.log(newconnection);
+    console.log(req.body);
+    const {cname, phone,email, city} = req.body;
+    var q = `select * from electricityboard where state="${newconnection.state_ut}";`;
+    connection.query(q, function(error, results){
+        if(error){
+            console.log("Error generated during search of boardname.");
+        } else {
+            console.log(results[0].boardname);
+            q = `insert into newconnection values("${cname}",${phone},"${results[0].boardname}","${newconnection.state_ut}","${newconnection.subdivision}","${newconnection.division}","${city}","${email}");`
+            connection.query(q,function(error, results){
+                if(error){
+                    console.log(error);
+                } else {
+                    res.redirect("/");
+                }
+            });
+            console.log("Removing data from new connection.");
+            newconnection = {
+                state_ut:"",
+                distributioncompany:"",
+                division:"",
+                subdivision:""
+            }
+        }
+    })
+});
+
+router.get("/cancel",function(req, res){
+    newconnection = {
+        state_ut:"",
+        distributioncompany:"",
+        division:"",
+        subdivision:""
+    }
     res.redirect("/");
 });
 
