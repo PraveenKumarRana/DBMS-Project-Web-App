@@ -11,5 +11,34 @@
             <p><b>City</b></p>
             <p><b>Email</b></p>
         </div>
+        <%newconnection.forEach(function(newconnection){%>
+            <div style="background-color: rgb(252, 252, 252); margin: 5px 0px;">
+                <div class="item">
+                    <p><%= newconnection.cname %></p>
+                    <p><%= newconnection.phone %></p>
+                    <p><%= newconnection.boardname %></p>
+                    <p><%= newconnection.state %></p>
+                    <p><%= newconnection.subdiv %></p>
+                    <p><%= newconnection.city %></p>
+                    <p><%= newconnection.email %></p>
+                </div>
+                <%if(admin.eid && admin.designation==="designation5")  {%>
+                    <div class="item">
+                        <div>
+                            <form action="/newconnection/approve"  method="post">
+                                <input class="get-id" name="name" value="<%= newconnection.email %>"></input>
+                                <input type="submit" class="btn btn-info" style="margin-right: 10px" value="Approve"></input>
+                            </form>
+                        </div>
+                        <div>
+                            <form action="/newconnection/reject" method="post">
+                                <input class="get-id" name="name" value="<%= newconnection.email %>"></input>
+                                <input type="submit" class="btn btn-danger" value="Reject"></input>
+                            </form>
+                        </div>
+                    </div>
+                <%}%>
+            </div>
+        <%});%>
     </div>
 <% include ../partials/footer %>
