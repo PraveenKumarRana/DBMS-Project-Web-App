@@ -27,6 +27,13 @@ admin = {
     designation:""
 }
 
+newconnection = {
+    state_ut:"",
+    distributioncompany:"",
+    division:"",
+    subdivision:""
+}
+
 //======================================
 //          HOMEPAGE ROUTES
 //======================================

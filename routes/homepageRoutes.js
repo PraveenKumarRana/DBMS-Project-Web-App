@@ -3,6 +3,12 @@ const router = express.Router();
 const connection = require("../models/index");
 
 router.get('/', function(req, res){
+    newconnection = {
+        state_ut:"",
+        distributioncompany:"",
+        division:"",
+        subdivision:""
+    }
     console.log("Printing the user from the get function.");
     console.log(user);
     res.render("homepage", {consumerId:user, admin:admin});

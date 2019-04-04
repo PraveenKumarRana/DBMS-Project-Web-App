@@ -1,37 +1,52 @@
 <% include ../partials/header %>
     <div class="new-connection-form container">
         <h1 class="table-header">Apply for New Connection</h1>
+        <ul class="navbar-nav pull-right">
+            <li class="nav-link" style="display: flex; flex-direction: row-reverse;">
+                <a class="btn btn-danger" href="/">Cancel</a>
+            </li>
+        </ul>
+        
         <form action="/newconnection" method="post">
             <div class="display-inline">
                 <label>State/UT : </label><select class="form-control" name="state_ut">
-                    <option value=""></option>
-                    <option>Jharkhand</option>
-                    <option>Maharastra</option>
+                    <option selected="selected"><%=newconnection.state_ut%></option>
+                    <%state.forEach(function(s){%>
+                        <option><%=s.state%></option>
+                    <%});%>
                 </select>
             </div>
+            <%if(newconnection.state_ut){%>
             <div class="display-inline">
                 <label>Distribution Company : </label><select class="form-control" name="distributioncompany">
-                    <option value=""></option>
-                    <option>Jharkhand Bijli Vitran</option>
-                    <option>Maharastra Bijli Vitran</option>
+                    <option selected="selected"><%=newconnection.distributioncompany%></option>
+                    <%distcomp.forEach(function(s){%>
+                    <option><%= s.dname %></option>
+                    <%});%>
                 </select>
             </div>
+            <%if(newconnection.distributioncompany){%>
             <div class="display-inline">
                 <label>Division : </label><select class="form-control" name="division">
-                    <option value=""></option>
-                    <option>Jhar</option>
-                    <option>Maha</option>
+                    <option selected="selected"><%=newconnection.division%></option>
+                    <%divname.forEach(function(s){%>
+                        <option><%= s.divname %></option>
+                    <%});%>
                 </select>
             </div>
+            <%if(newconnection.division){%>
             <div class="display-inline">
                 <label>Sub Division : </label><select class="form-control" name="subdivision">
-                    <option value=""></option>
-                    <option>J</option>
-                    <option>M</option>
+                    <%subdiv.forEach(function(s){%>
+                        <option><%= s.sdivname %></option>
+                    <%});%>
                 </select>
             </div>
-            
             <input type="submit" class="btn btn-success" value="Submit"></form>
+            <%}%>
+            <%}%>
+            <%}%>
+            <input type="submit" style="height: 0px; width: 0px ; visibility: hidden;"></input>
         </form>
     </div>
 <% include ../partials/footer %>

@@ -2,12 +2,6 @@ const express = require("express");
 const router = express.Router();
 const connection = require("../models/index");
 
-var newconnection = {
-    state_ut:"",
-    distributioncompany:"",
-    division:"",
-    subdivision:""
-}
 
 router.get("/profile", function(req, res){
     var consumerId = user.cid;
@@ -74,11 +68,118 @@ router.post('/', function(req, res){
 //          APPLY FOR NEW CONNECTION ROUTES
 //===================================================
 router.get("/newconnection", function(req, res){
-    res.render("consumer/new_connection_form", {consumerId:user, admin:admin});
+    var q = "select distinct state from consumer;";
+    connection.query(q, function(error, results, fields){
+        if(error){
+            console.log("Problem in getting the state list");
+        } else {
+            console.log(results);
+            res.render("consumer/new_connection_form", {state:results,newconnection:newconnection,consumerId:user, admin:admin});
+        }
+    });
 });
 
 router.post("/newconnection", function(req, res){
-    res.render("consumer/new_connection_next_form", {consumerId:user, admin:admin});
+    // assing value from the request.
+    newconnection.state_ut = req.body.state_ut;
+    newconnection.subdivision = req.body.subdivision;
+    newconnection.distributioncompany = req.body.distributioncompany;
+    newconnection.division = req.body.division;
+    if(newconnection.subdivision){
+        res.render("consumer/new_connection_next_form", {newconnection:newconnection,consumerId:user, admin:admin});
+    } else {
+        if(newconnection.state_ut){
+            if(!newconnection.distributioncompany){
+                var q = "select distinct state from consumer;";
+                connection.query(q, function(error, results, fields){
+                    if(error){
+                        console.log("Problem in getting the state list");
+                    } else {
+                        console.log(results);
+                        console.log(newconnection);
+                        q = `select dname from distributioncompany where state="${newconnection.state_ut}";`;
+                        connection.query(q, function(error, disresults){
+                            if(error){
+                                console.log("Error generated during search of dname using state.");
+                            } else {
+                                console.log(results);
+                                res.render("consumer/new_connection_form", {state:results,distcomp:disresults,newconnection:newconnection,consumerId:user, admin:admin});
+                            }
+                        }); 
+                    }
+                });
+
+                
+            } else {
+                if(newconnection.distributioncompany){
+                    if(!newconnection.division){
+                        var q = "select distinct state from consumer;";
+                        connection.query(q, function(error, results, fields){
+                            if(error){
+                                console.log("Problem in getting the state list");
+                            } else {
+                                console.log(results);
+                                console.log(newconnection);
+                                q = `select dname from distributioncompany where state="${newconnection.state_ut}";`;
+                                connection.query(q, function(error, disresults){
+                                    if(error){
+                                        console.log("Error generated during search of dname using state.");
+                                    } else {
+                                        console.log(results);
+                                        q = `select divname from division where state="${newconnection.state_ut}";`;
+                                        connection.query(q, function(error, divresults){
+                                            if(error){
+                                                console.log("Error generated during search of divname.");
+                                            } else {
+                                                res.render("consumer/new_connection_form", {state:results,distcomp:disresults,divname:divresults,newconnection:newconnection,consumerId:user, admin:admin});
+                                            }
+                                        })
+                                    }
+                                }); 
+                            }
+                        });
+                    } else {
+                        var q = "select distinct state from consumer;";
+                        connection.query(q, function(error, results, fields){
+                            if(error){
+                                console.log("Problem in getting the state list");
+                            } else {
+                                console.log(results);
+                                console.log(newconnection);
+                                q = `select dname from distributioncompany where state="${newconnection.state_ut}";`;
+                                connection.query(q, function(error, disresults){
+                                    if(error){
+                                        console.log("Error generated during search of dname using state.");
+                                    } else {
+                                        console.log(results);
+                                        q = `select divname from division where state="${newconnection.state_ut}";`;
+                                        connection.query(q, function(error, divresults){
+                                            if(error){
+                                                console.log("Error generated during search of divname.");
+                                            } else {
+                                                q = `select * from subdivision join division using(divid) where division.state="${newconnection.state_ut}";`
+                                                console.log(newconnection);
+                                                console.log(q);
+                                                connection.query(q, function(error, subdiv){
+                                                    if(error){
+                                                        console.log("Error in getting the subdivision.");
+                                                    } else {
+                                                        res.render("consumer/new_connection_form", {state:results,distcomp:disresults,divname:divresults,subdiv:subdiv,newconnection:newconnection,consumerId:user, admin:admin});
+                                                    }
+                                                });
+                                            }
+                                        })
+                                    }
+                                }); 
+                            }
+                        });
+                    }
+                }
+            }
+        } else{
+            res.redirect("/newconnection");
+        }
+    }
 });
 
 router.post("/newconnection/add", function(req, res){
