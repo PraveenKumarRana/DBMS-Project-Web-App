@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const connection = require("../models/index");
-
+ref = {
+    id:""
+}
 
 router.get("/profile", function(req, res){
     var consumerId = user.cid;
@@ -188,14 +190,23 @@ router.post("/newconnection/add", function(req, res){
     // This will be adding the data given be the user to the newconnection database for aprooval.
     console.log(newconnection);
     console.log(req.body);
-    const {cname, phone,email, city} = req.body;
+    const {cname, phone,email, city, address} = req.body;
+    var refid = `select max(id) as id from ref;`;
+    connection.query(refid, function(error, results){
+        if(error){
+            console.log("Error in getting refid.");
+        } else {
+            ref.id = results[0].id;
+        }
+    });
+
     var q = `select * from electricityboard where state="${newconnection.state_ut}";`;
     connection.query(q, function(error, results){
         if(error){
             console.log("Error generated during search of boardname.");
         } else {
             console.log(results[0].boardname);
-            q = `insert into newconnection values("${cname}",${phone},"${results[0].boardname}","${newconnection.state_ut}","${newconnection.subdivision}","${newconnection.division}","${city}","${email}");`
+            q = `insert into newconnection values("${cname}",${phone},"${results[0].boardname}","${newconnection.state_ut}","${newconnection.subdivision}","${newconnection.division}","${city}","${email}","${address}","${ref.id}",NULL);`
             connection.query(q,function(error, results){
                 if(error){
                     console.log(error);
@@ -211,7 +222,17 @@ router.post("/newconnection/add", function(req, res){
                 subdivision:""
             }
         }
-    })
+    });
+
+    var refid = `update ref set id=${ref.id + 1} where id={ref.id};`;
+    connection.query(refid, function(error, results){
+        if(error){
+            console.log("Error in getting refid.");
+        } else {
+            ref.id = "";
+            res.redirect("/");
+        }
+    });
 });
 
 router.get("/cancel",function(req, res){
