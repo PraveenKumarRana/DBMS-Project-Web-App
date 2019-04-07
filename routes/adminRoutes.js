@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const connection = require("../models/index");
+newconsumer = {
+    cid:""
+}
 
 router.get("/adminlogin", function(req, res){
     res.render("admin/login",{admin:admin, consumerId:user});
@@ -47,13 +50,39 @@ router.get("/newconnection/requests", function(req,res){
 // Approval requests
 //==========================
 router.post("/newconnection/approve", function(req,res){
+    var ncid = `select cid, meterno from consumer order by cid desc limit 1;`;
+    connection.query(ncid, function(error, results){
+        if(error){
+            console.log("Error in getting ncid");
+        } else {
+            newconsumer.cid = results[0].cid + 1;
+            newconsumer.meterno = results[0].meterno + 1;
+        }
+    });
+
     var q=`select * from newconnection where email="${req.body.name}";`;
     connection.query(q, function(error, results){
         if(error){
             console.log("Error in getting newconnection information.");
         } else {
             console.log(results);
-            res.render("admin/newconnectionrequest", {newconnection:results,consumerId:user, admin:admin});
+            const {cname, phone, boardname, state, subdiv, divis, city, email, address} = results[0];
+            q=`insert into consumer values(${newconsumer.cid},"${cname}",${phone},"${boardname}","${state}","${subdiv}","${divis}","${city}",${newconsumer.meterno}, "password", "${email}", "${address}");`;
+            connection.query(q, function(error, results){
+                if(error){
+                    console.log("Error in saving the new consumer.");
+                } else {
+                    q=`delete from newconnection where email="${req.body.name}";`;
+                    connection.query(q, function(error, results){
+                        if(error){
+                            console.log("Error generated on deleting the info from the newconnection page.")
+                        } else {
+                            res.redirect("/");
+                        }
+                    })
+                }
+            });
+            res.redirect("/");
         }
     })
 });
