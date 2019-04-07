@@ -211,7 +211,7 @@ router.post("/newconnection/add", function(req, res){
                 if(error){
                     console.log(error);
                 } else {
-                    res.redirect("/");
+                    res.render("consumer/message",{refid:ref.id,consumerId:user, admin:admin});
                 }
             });
             console.log("Removing data from new connection.");
@@ -243,6 +243,48 @@ router.get("/cancel",function(req, res){
         subdivision:""
     }
     res.redirect("/");
+});
+
+//===========================
+//   STATUS ROUTES
+//===========================
+router.get("/status",function(req, res){
+    res.render("consumer/status",{status:{message:""},consumerId:user, admin:admin});
+});
+
+router.post("/status",function(req, res){
+    var ref = req.body.ref;
+    var q = `select * from newconnection where refid="${ref}";`;
+    connection.query(q, function(error, results){
+        if(error){
+            console.log("Error in getting the form status.")
+        } else {
+            if(results[0]){
+                res.render("consumer/status",{status:{message:"Pending.."},consumerId:user, admin:admin});
+            } else {
+                q=`select * from consumer where email="${req.body.email}";`
+                connection.query(q, function(error, results){
+                    if(error){
+                        console.log("Error in searching for user in Consumer table!")
+                    } else {
+                        if(results[0]){
+                            res.render("consumer/status",{status:{message:"Congrats! Successfully registered."},consumerId:user, admin:admin});
+                        } else {
+                            res.render("consumer/status",{status:{message:"Sorry! Your application has been rejected."},consumerId:user, admin:admin});
+                        }
+                    }
+                })
+            }
+        }
+    });
+});
+
+//===========================
+//   MESSAGE ROUTES
+//===========================
+
+router.get("/messages",function(req, res){
+    res.render("consumer/message",{refid:ref.id,consumerId:user, admin:admin});
 });
 
 module.exports = router;

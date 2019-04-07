@@ -1,0 +1,21 @@
+<% include ../partials/header %>
+    <div class="form-display">
+        <div class="card w-50" style="margin: 80px auto 0px auto; box-align:center;">
+            <div class="card-body" style="align-self: center">
+                <h5 class="card-title">Status!</h5>
+                <form action="/status" method="post">
+                    <input type="text" class="form-control" name="ref" placeholder="Enter Reference ID."></input>
+                    <input type="email" style="margin: 10px auto;"class="form-control" name="email" placeholder="Email"></input>
+                    <%if(status.message=="Pending..."){%>
+                    <p style="font-size:0.5in; color:red;"><b><%=status.message%></b></p>
+                    <%}%>
+                    <%if(!(status.message=="Pending...")){%>
+                        <p style="font-size:0.5in; color:green;"><b><%=status.message%></b></p>
+                    <%}%>
+                    <input type="submit" class="btn btn-info" value="Check"></input>
+                    <a href="/" class="btn btn-danger">Close</a>
+                </form>
+            </div>
+        </div>
+    </div>
+<% include ../partials/footer %>

@@ -10,6 +10,7 @@
             <p><b>Sub Division</b></p>
             <p><b>City</b></p>
             <p><b>Email</b></p>
+            <p><b>Address</b></p>
         </div>
         <%newconnection.forEach(function(newconnection){%>
             <div style="background-color: rgb(252, 252, 252); margin: 5px 0px;">
@@ -21,6 +22,7 @@
                     <p><%= newconnection.subdiv %></p>
                     <p><%= newconnection.city %></p>
                     <p><%= newconnection.email %></p>
+                    <p><%= newconnection.address %></p>
                 </div>
                 <%if(admin.eid && admin.designation==="designation5")  {%>
                     <div class="item">
