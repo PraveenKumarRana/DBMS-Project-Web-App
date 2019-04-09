@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const connection = require("../models/index");
 ref = {
-    id:""
+    id:"",
+    pre:""
 }
 
 router.get("/profile", function(req, res){
@@ -197,6 +198,17 @@ router.post("/newconnection/add", function(req, res){
             console.log("Error in getting refid.");
         } else {
             ref.id = results[0].id;
+            ref.pre = ref.id;
+            refid = `update ref set id=${ref.id + 1} where id=${ref.id};`;
+            connection.query(refid, function(error, results){
+                if(error){
+                    console.log(refid);
+                    console.log("Error in updating refid.");
+                } else {
+                    console.log(refid);
+                    console.log("Updated the ref table.");
+                }
+            });
         }
     });
 
@@ -211,7 +223,7 @@ router.post("/newconnection/add", function(req, res){
                 if(error){
                     console.log(error);
                 } else {
-                    res.render("consumer/message",{refid:ref.id,consumerId:user, admin:admin});
+                    res.render("consumer/message",{refid:ref.pre,consumerId:user, admin:admin});
                 }
             });
             console.log("Removing data from new connection.");
@@ -221,16 +233,7 @@ router.post("/newconnection/add", function(req, res){
                 division:"",
                 subdivision:""
             }
-        }
-    });
-
-    var refid = `update ref set id=${ref.id + 1} where id={ref.id};`;
-    connection.query(refid, function(error, results){
-        if(error){
-            console.log("Error in getting refid.");
-        } else {
             ref.id = "";
-            res.redirect("/");
         }
     });
 });

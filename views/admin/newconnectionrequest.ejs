@@ -3,7 +3,7 @@
     <div class="make-row container">
         <h1 class="table-header">New Connection Requests</h1>
         <div class="item">
-            <p><b>Applicant Name</b></p>
+            <p><b>Name</b></p>
             <p><b>Phone No.</b></p>
             <p><b>Board Name</b></p>
             <p><b>State</b></p>
@@ -11,6 +11,7 @@
             <p><b>City</b></p>
             <p><b>Email</b></p>
             <p><b>Address</b></p>
+            <p><b>Ref ID</b></p>
         </div>
         <%newconnection.forEach(function(newconnection){%>
             <div style="background-color: rgb(252, 252, 252); margin: 5px 0px;">
@@ -23,6 +24,7 @@
                     <p><%= newconnection.city %></p>
                     <p><%= newconnection.email %></p>
                     <p><%= newconnection.address %></p>
+                    <p><%= newconnection.refid %></p>
                 </div>
                 <%if(admin.eid && admin.designation==="designation5")  {%>
                     <div class="item">
