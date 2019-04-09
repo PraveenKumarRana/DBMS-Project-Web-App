@@ -1,9 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const connection = require("../models/index");
+const nodemailer = require("nodemailer");
 ref = {
     id:"",
-    pre:""
+    pre:"",
+    cname:"",
+    boardname:"",
+    state:"",
+    address:"",
+    phone:""
 }
 
 router.get("/profile", function(req, res){
@@ -218,12 +224,49 @@ router.post("/newconnection/add", function(req, res){
             console.log("Error generated during search of boardname.");
         } else {
             console.log(results[0].boardname);
+            ref.boardname = results[0].boardname;
+            ref.address = `${address}`;
+            ref.cname = `${cname}`;
             q = `insert into newconnection values("${cname}",${phone},"${results[0].boardname}","${newconnection.state_ut}","${newconnection.subdivision}","${newconnection.division}","${city}","${email}","${address}","${ref.id}",NULL);`
             connection.query(q,function(error, results){
                 if(error){
                     console.log(error);
                 } else {
+                    //==================================================
+                    //          SENDING THE MAIL WITH RESPONSE
+                    //==================================================
+                    var transporter = nodemailer.createTransport({
+                        service: 'gmail',
+                        auth: {
+                          user: 'projectdbmshelp@gmail.com',
+                          pass: 'razne7-tobsuc-kyxtaG'
+                        }
+                      });
+                      emailto = `${email}`;
+                      var text = `<h1>Reference ID : ${ref.pre}</h1>
+                      <p><b>Board Name: &nbsp;</b>${ref.boardname}</p>
+                      <p><b>Name: &nbsp;</b>${ref.cname}</p>
+                      <p><b>Address: &nbsp;</b>${ref.address}</p>
+                      <h7>For any help please feel free to reply.</h7>`;
+
+                      var mailOptions = {
+                        from: 'projectdbmshelp@gmail.com',
+                        to: emailto,
+                        subject: 'Your application is submitted successfully.',
+                        html:text
+                      };
+                      
+                      transporter.sendMail(mailOptions, function(error, info){
+                        if (error) {
+                          console.log(error);
+                        } else {
+                          console.log('Email sent: ' + info.response);
+                        }
+                      });
+                    // Rendering the display page.
                     res.render("consumer/message",{refid:ref.pre,consumerId:user, admin:admin});
+
+                    
                 }
             });
             console.log("Removing data from new connection.");
