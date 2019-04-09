@@ -49,7 +49,7 @@ router.post('/', function(req, res){
     console.log(consumerId);
     var q = `select password from consumer where cid=${consumerId};`;
     connection.query(q, function(error, results, fields){
-        console.log(results[0].password);
+        console.log(results);
         console.log("Query is running!");
         if(error){
             console.log("error!");

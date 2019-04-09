@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const connection = require("../models/index");
+const nodemailer = require("nodemailer");
 newconsumer = {
     cid:""
 }
