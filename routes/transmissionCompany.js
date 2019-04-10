@@ -39,7 +39,7 @@ router.get("/transmissioncompany/new", function(req, res, next){
 
 router.post("/transmissioncompany/new", function(req, res, next){
     if(admin.designation==="designation5"){
-        var q = `insert into transmissioncompany values(${req.body.tid},"${req.body.tname}",${req.body.did},${req.body.tcapacity},"${req.body.state}",${req.body.tenure},${req.body.pid});`;
+        var q = `insert into transmissioncompany values(${req.body.tid},"${req.body.tname}",${req.body.did},${req.body.tcapacity},"${req.body.state}",${req.body.tenure});`;
         console.log(q);
         connection.query(q, function(error, results, fields){
             if(error) throw error;
@@ -69,7 +69,7 @@ router.post("/transmissioncompany/update",function(req,res){
 });
 router.post("/transmissioncompany/updating", function(req, res){
     if(admin.designation==="designation5"){
-        var q = `update transmissioncompany set tname="${req.body.tname}",tenure=${req.body.tenure},state="${req.body.state}",did=${req.body.did},pid=${req.body.pid},tcapacity=${req.body.tcapacity} where tid=${req.body.tid};`;
+        var q = `update transmissioncompany set tname="${req.body.tname}",tenure=${req.body.tenure},state="${req.body.state}",did=${req.body.did},tcapacity=${req.body.tcapacity} where tid=${req.body.tid};`;
         console.log(q);
         connection.query(q, function(error, results, fields){
             if(error) throw error;

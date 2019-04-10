@@ -1,13 +1,19 @@
 <% include ../partials/header %>
     <div class="consumer-profile-page container">
         <h2 class="table-header">Welcome back, &nbsp;<%=admin.ename%></h2>
-        <div class="user-info-container">
-            <p><b>Employee Id : </b><%=admin.eid%></p>
-            <p><b>Phone No : </b><%=admin.phone%></p>
-            <p><b>Age : </b><%=admin.age%></p>
-            <p><b>Board Name : </b><%=admin.boardname%></p>
-            <p><b>Designation : </b><%=admin.designation%></p>
-            <p><b>Date of Joining  : </b><%=admin.dob%></p>
+        <div class="profile-page">
+            <div class="user-info-container">
+                <p><b>Employee Id : </b><%=admin.eid%></p>
+                <p><b>Phone No : </b><%=admin.phone%></p>
+                <p><b>Age : </b><%=admin.age%></p>
+                <p><b>Board Name : </b><%=admin.boardname%></p>
+                <p><b>Designation : </b><%=admin.designation%></p>
+                <p><b>Date of Joining  : </b><%=admin.dob%></p>
+            </div>
+            <div class="user-info-container">
+                <img src="https://cdn.pixabay.com/photo/2017/07/18/23/23/user-2517433_960_720.png" alt="User-icon" height="200px" width="200px" style="border-radius: 50%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.493);"/>
+                <h1 style="padding:5px; text-align: center; padding-top: 20px;"><%=admin.ename%></h1>
+            </div>
         </div>
     </div>
 <% include ../partials/footer %>

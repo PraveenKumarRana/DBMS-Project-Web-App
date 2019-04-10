@@ -2,7 +2,7 @@
 body{
     top: 0;
     left: 0;
-    background-color: rgba(241, 241, 241, 0.692);
+    background-color: rgba(241, 241, 241);
 }
 
 .navbar{
@@ -11,20 +11,19 @@ body{
 
 /* HOMEPAGE DECORATION */
 .homepage-main{
-    background-image: url("https://www.bp.com/content/dam/bp/business-sites/en/global/corporate/images-jpg-png/energy-economics/power-station-stats-review.jpg.img.3840.medium.jpg");
+    background-image: url("../images/electricity.jpg");
     background-size: cover;
     position: center center;
     height: 93vh;
-    top: 0;
-    left: 0;
+    width: 100%;
     border-top: 1px solid white;
 }
 
 /* LOGIN FORM DECORATION */
 .form-display >form {
     width: 30%;
-    padding: 5%;
-    margin: 0px auto;
+    padding: 5% 5%;
+    margin-left: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,4 +50,13 @@ body{
 
 .login-welcome-message >a {
     margin: 15px 20px;
+}
+
+
+/* Profile page */
+.profile-page{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 5%;
 }
