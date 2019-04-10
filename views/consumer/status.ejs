@@ -4,8 +4,8 @@
             <div class="card-body" style="align-self: center">
                 <h5 class="card-title">Status!</h5>
                 <form action="/status" method="post">
-                    <input type="text" class="form-control" name="ref" placeholder="Enter Reference ID."></input>
-                    <input type="email" style="margin: 10px auto;"class="form-control" name="email" placeholder="Email"></input>
+                    <input type="text" class="form-control" name="ref" placeholder="Enter Reference ID." required></input>
+                    <input type="email" style="margin: 10px auto;"class="form-control" name="email" placeholder="Email" required></input>
                     <%if(status.message=="Pending..."){%>
                     <p style="font-size:0.5in; color:red;"><b><%=status.message%></b></p>
                     <%}%>
