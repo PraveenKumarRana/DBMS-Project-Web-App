@@ -77,12 +77,12 @@ router.post("/newconnection/approve", function(req,res){
                         if(error){
                             console.log("Error generated on deleting the info from the newconnection page.")
                         } else {
+                            debugger;
                             res.redirect("/");
                         }
                     })
                 }
             });
-            res.redirect("/");
         }
     })
 });
