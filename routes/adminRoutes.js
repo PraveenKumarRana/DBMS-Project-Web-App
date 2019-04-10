@@ -14,6 +14,7 @@ router.get("/adminprofile", function(req, res){
 });
 
 router.post("/adminlogin", function(req,res){
+
     var eid = req.body.eid;
     var password = req.body.password;
     var q = `select * from employee where eid=${eid};`;
@@ -25,6 +26,8 @@ router.post("/adminlogin", function(req,res){
                 console.log(results);
                 admin=results[0];
                 res.render("homepage", {consumerId:user, admin:admin});
+            } else{
+                res.redirect("/adminlogin");
             }
         }
     });
@@ -35,6 +38,7 @@ router.post("/adminlogin", function(req,res){
 // New connection requests
 //==========================
 router.get("/newconnection/requests", function(req,res){
+    if(admin.designation == "designation5"){
     var q=`select * from newconnection;`;
     connection.query(q, function(error, results){
         if(error){
@@ -44,12 +48,16 @@ router.get("/newconnection/requests", function(req,res){
             res.render("admin/newconnectionrequest", {newconnection:results,consumerId:user, admin:admin});
         }
     })
+    } else {
+        res.redirect("/adminlogin");
+    }
 });
 
 //==========================
 // Approval requests
 //==========================
 router.post("/newconnection/approve", function(req,res){
+    if(admin.designation == "designation5"){
     var ncid = `select cid, meterno from consumer order by cid desc limit 1;`;
     connection.query(ncid, function(error, results){
         if(error){
@@ -85,6 +93,9 @@ router.post("/newconnection/approve", function(req,res){
             });
         }
     })
+    } else {
+        res.redirect("/adminlogin");
+    }
 });
 
 //==========================

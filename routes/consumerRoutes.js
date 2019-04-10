@@ -68,6 +68,8 @@ router.post('/', function(req, res){
                         res.render("homepage", {consumerId:user, admin:admin});
                     }
                 });
+            } else {
+                res.redirect("/");
             }
         }
     });
