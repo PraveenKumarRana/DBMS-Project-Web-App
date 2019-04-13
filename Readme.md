@@ -31,5 +31,8 @@ Build using _NodeJS, Express Framework, Bootstrap v4.0, MySQL Database , HTML an
 ![Editable-List](demoSnapshots/edit.png)
 
 ## Logged In User Profile and Bill Information Page.
-<img src="./demoSnapshots/profile.png" width="40%" border="5%"/>
-<img src="./demoSnapshots/bill.png" width="40%" border="5%"/>
+<div style="display:flex; flex-direction:row; justify-content:space-between;">
+    <img src="./demoSnapshots/profile.png" width="40%" border="5%"/>
+    <img src="./demoSnapshots/bill.png" width="40%" border="5%"/>
+</div>
+
