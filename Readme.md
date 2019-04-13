@@ -4,9 +4,16 @@ Build using _NodeJS, Express Framework, Bootstrap v4.0, MySQL Database , HTML an
 
 **Language Used**: JavaScript, SQL, and Markup Language.  
 
+## To Run This in Your Local Computer
+- Clone/Download the repository
+- Open the directory in the terminal.
+- Run the command _npm install_ . This will install the required dependencies
+- Run _node index.js_ . This will start the server at **localhost:8080**
+
 ## Functionalities Present
 ### Landing Page
 ![Landing-Page](demoSnapshots/LandingPage.png)
+
 - From here _consumer_ can login and check about his profile and electricity bill details.  
 - A new _consumer_ can apply for new connection and if already applied then he can check for the status.  
 - On Clicking for Apply connection first Selecting of some information will be taking place and then the form will be displayed.  
@@ -18,13 +25,17 @@ Build using _NodeJS, Express Framework, Bootstrap v4.0, MySQL Database , HTML an
 
 ### Reference Id
 - And this reference Id will also be mailed to the user with other details. This I am doing with the help of _Nodemailer_ npm package which is using TCP protocol for sending the message.
+
 ![Refid](demoSnapshots/refid.png) 
-- The demo mail which has been sent to the user.  
+
+- The demo mail which has been sent to the user. 
+
 ![Mail](demoSnapshots/mail.png)
 
 ### Application Status
 - This will take email id and reference id as input and show whether the form is accepted or not.    
 ![Application-Status](demoSnapshots/status.png)
+
 
 ### Electricity Board List
 - In the same way Power Company, Distribution Company and Transmission Company list will be displayed to the general user such as consumer.
@@ -45,3 +56,8 @@ Build using _NodeJS, Express Framework, Bootstrap v4.0, MySQL Database , HTML an
 
 ![Bill](demoSnapshots/bill.png)
 
+This Same Project has been Replicated using Python for Desktop Application by my Group Members: [Code](https://github.com/PraveenKumarRana/DBMS-Project-Desktop-App)
+
+
+**Hope that You will Enjoy our Project.**
+_Happy Coding._
