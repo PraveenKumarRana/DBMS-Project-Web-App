@@ -20,7 +20,8 @@ Build using _NodeJS, Express Framework, Bootstrap v4.0, MySQL Database , HTML an
 
 ### Appy New Connection
 ![Selecting-For-New-Connection](demoSnapshots/newConnection.png)
-- On filling the above form this connection form will appear. And on Successfull Submission Reference Id will be shown.    
+- On filling the above form this connection form will appear. And on Successfull Submission Reference Id will be shown.
+
 ![New-Connection-Form](demoSnapshots/newconForm.png) 
 
 ### Reference Id
@@ -33,7 +34,8 @@ Build using _NodeJS, Express Framework, Bootstrap v4.0, MySQL Database , HTML an
 ![Mail](demoSnapshots/mail.png)
 
 ### Application Status
-- This will take email id and reference id as input and show whether the form is accepted or not.    
+- This will take email id and reference id as input and show whether the form is accepted or not.
+
 ![Application-Status](demoSnapshots/status.png)
 
 
@@ -59,5 +61,5 @@ Build using _NodeJS, Express Framework, Bootstrap v4.0, MySQL Database , HTML an
 This Same Project has been Replicated using Python for Desktop Application by my Group Members: [Code](https://github.com/PraveenKumarRana/DBMS-Project-Desktop-App)
 
 
-**Hope that You will Enjoy our Project.**
+**Hope that You will Enjoy our Project.**    
 _Happy Coding._
