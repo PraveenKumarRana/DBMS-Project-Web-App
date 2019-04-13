@@ -20,3 +20,16 @@ Build using _NodeJS, Express Framework, Bootstrap v4.0, MySQL Database , HTML an
 ### Application Status
 - This will take email id and reference id as input and show whether the form is accepted or not.    
 ![Application-Status](demoSnapshots/status.png)
+
+### Electricity Board List
+- In the same way Power Company, Distribution Company and Transmission Company list will be displayed to the general user such as consumer.
+- This is the simple list page for people to see that which are the board list are available in there country, where they are etc.
+![Electricity-List](demoSnapshots/view.png)
+- The search bar will help to search for Name in particular state.
+- This data can't be tampered by the common people.
+- When the authorized staff will login he/she can update the details/ delete any company which is shut down/ or add any new company.
+![Editable-List](demoSnapshots/edit.png)
+
+## Logged In User Profile and Bill Information Page.
+<img src="./demoSnapshots/profile.png" width="40%" border="5%"/>
+<img src="./demoSnapshots/bill.png" width="40%" border="5%"/>
