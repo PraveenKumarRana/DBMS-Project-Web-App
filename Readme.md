@@ -13,10 +13,10 @@ Build using _NodeJS, Express Framework, Bootstrap v4.0, MySQL Database , HTML an
 
 ### Appy New Connection
 ![Selecting-For-New-Connection](demoSnapshots/newConnection.png)
-- On filling the above form this connection form will appear. And on Successfull Submission Reference Id will be shown.
-![New-Connection-Form](demoSnapshots/newconForm.png)
+- On filling the above form this connection form will appear. And on Successfull Submission Reference Id will be shown.    
+![New-Connection-Form](demoSnapshots/newconForm.png)   
 ### Reference Id
-![Refid](demoSnapshots/refid.png)
+![Refid](demoSnapshots/refid.png)   
 ### Application Status
-- This will take email id and reference id as input and show whether the form is accepted or not.
+- This will take email id and reference id as input and show whether the form is accepted or not.    
 ![Application-Status](demoSnapshots/status.png)
